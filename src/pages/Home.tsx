@@ -1,12 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useNavigate } from 'react-router-dom'
+
+
 import '../App.css'
 import { FancyButton } from "../components/FancyButton";
 
-import { ExampleBackground } from "../components";
+
 import { SvgBackground } from '../svg_bg';
-import ColorSVG from "../assets/color_bg.svg";
+
 function Home() {
   const navigate = useNavigate();
 
