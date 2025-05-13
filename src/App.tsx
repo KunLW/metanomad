@@ -1,5 +1,5 @@
 import Background from './pages/Background.tsx'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import StartPage from './pages/StartPage'
 
