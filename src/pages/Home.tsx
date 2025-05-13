@@ -5,13 +5,15 @@ import '../App.css'
 import { FancyButton } from "../components/FancyButton";
 
 import { ExampleBackground } from "../components";
+import { SvgBackground } from '../svg_bg';
+import ColorSVG from "../assets/color_bg.svg";
 function Home() {
   const navigate = useNavigate();
 
   return (
     <>
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
-        <ExampleBackground />
+      <SvgBackground />
       </div>
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* <a href="https://vite.dev" target="_blank">
