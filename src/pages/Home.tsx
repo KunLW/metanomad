@@ -5,16 +5,14 @@ import '../App.css'
 import { FancyButton } from "../components/FancyButton";
 
 
-import { SvgBackground } from '../svg_bg';
+import { SvgBackground } from '../SvgBackground';
 
 function Home() {
   const navigate = useNavigate();
 
   return (
     <>
-      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0 }}>
-      <SvgBackground />
-      </div>
+      <SvgBackground orbitA={150} orbitB={40} scale={1}/>
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

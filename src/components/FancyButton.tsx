@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css"; // 或者单独拆出 fancy-button.css 来引入
+import "./FancyButton.css"; // Import your CSS file for styling
 
 interface FancyButtonProps {
   text: string;
