@@ -1,0 +1,61 @@
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: 0;
+  padding: 0;
+
+
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.paragraph {
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #969696;
+}
+
+.green-screen {
+  background: linear-gradient(
+    135deg,
+    #f2fcf6 0%,
+    #b4e0cc 60%,
+    #52A773 100%
+  );
+}
+
+.red-screen {
+  background: linear-gradient(
+    135deg,
+    #f2fcf6 0%,
+    #f2b2b2 60%,
+    #A75252 100%
+  );
+}
+
+.blue-screen {
+  background: linear-gradient(
+    135deg,
+    #f2fcf6 0%,
+    #b1d2dd 60%,
+    #4480ab 100%
+  );
+}

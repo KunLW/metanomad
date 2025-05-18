@@ -8,18 +8,30 @@ interface ImageItem {
 }
 
 // Define the list of images
-const images: ImageItem[] = [
+export const images1: ImageItem[] = [
   { id: 1, src: "/Desert.png" },
   { id: 2, src: "/Hill.png" },
   { id: 3, src: "/Mountain.png" },
   { id: 4, src: "/Forest.png" },
   { id: 5, src: "/Plain.png" },
   { id: 6, src: "/Seashore.png" },
-  
-
 ];
 
-const ImageGallery: React.FC = () => {
+export const images2: ImageItem[] = [
+  { id: 1, src: "/Hill.png" },
+  { id: 2, src: "/Desert.png" },
+  { id: 3, src: "/Mountain.png" },
+  { id: 4, src: "/Forest.png" },
+  { id: 5, src: "/Plain.png" },
+  { id: 6, src: "/Seashore.png" },
+];
+
+
+interface ImageGalleryProps {
+  images: ImageItem[];
+}
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
@@ -33,7 +45,6 @@ const ImageGallery: React.FC = () => {
       {images.map((image) => (
         <img
           key={image.id}
-          // src={"/Desert.png"} // Replace with image.src when using actual images
           src={image.src}
           alt={`Image ${image.id}`}
           className={`image-item ${hoveredId === image.id ? "hovered" : ""} ${selectedId === image.id ? "selected" : ""}`}
@@ -47,3 +58,7 @@ const ImageGallery: React.FC = () => {
 };
 
 export default ImageGallery;
+
+
+
+
