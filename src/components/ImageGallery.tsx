@@ -18,14 +18,22 @@ export const images1: ImageItem[] = [
 ];
 
 export const images2: ImageItem[] = [
-  { id: 1, src: "/Hill.png" },
-  { id: 2, src: "/Desert.png" },
-  { id: 3, src: "/Mountain.png" },
-  { id: 4, src: "/Forest.png" },
-  { id: 5, src: "/Plain.png" },
-  { id: 6, src: "/Seashore.png" },
+  { id: 1, src: "/Sunny.png" },
+  { id: 2, src: "/Cloudy.png" },
+  { id: 3, src: "/Rainy.png" },
+  { id: 4, src: "/Stormy.png" },
+  { id: 5, src: "/Snowy.png" },
+  { id: 6, src: "/Windy.png" },
 ];
 
+export const images3: ImageItem[] = [
+  { id: 1, src: "/Happy.png" },
+  { id: 2, src: "/Calm.png" },
+  { id: 3, src: "/Scared.png" },
+  { id: 4, src: "/Sad.png" },
+  { id: 5, src: "/Excited.png" },
+  { id: 6, src: "/Funny.png" },
+];
 
 
 
