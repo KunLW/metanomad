@@ -9,11 +9,12 @@ function Questions() {
   const navigate = useNavigate();
 
   return (
-    <div className="screen green-screen">
+    <div className="screen blue-screen">
       <div style={{ position: "relative", zIndex: 1 }}>
-        <p className="paragraph">Click on an image to select it.</p>
-        <h1 className="title">Question 2</h1>
-        <div style={{ padding: "20px" }}>
+        <p className="question-paragraph">Answer a few simple questions
+to shape your digital avatar.</p>
+        <h1 className="question-title">What is the weather like？</h1>
+        <div style={{ padding: "30px" }}>
           <ImageGallery images={images2} />
         </div>
         <div className="card" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
