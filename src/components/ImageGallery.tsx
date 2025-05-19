@@ -27,6 +27,8 @@ export const images2: ImageItem[] = [
 ];
 
 
+
+
 interface ImageGalleryProps {
   images: ImageItem[];
 }
