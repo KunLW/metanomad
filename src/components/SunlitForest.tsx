@@ -31,8 +31,8 @@ const SunlitForest = () => {
         Your browser does not support the video tag.
       </video>
       <div className="sunlit-left">
-        <p className="subtitle">Time: 25, May, 2025<br />Location: Xiamen, China</p>
-        <h1 className="title">Light-Seeker<br />Within the<br />Sunlit Forest</h1>
+        <p className="gen-subtitle">Time: 25, May, 2025<br />Location: Xiamen, China</p>
+        <h1 className="gen-title">Light-Seeker<br />Within the<br />Sunlit Forest</h1>
 
         <StatsBar
           stats={[
@@ -48,7 +48,7 @@ const SunlitForest = () => {
         </div>
       </div>
 
-      <div className="floating-text">Here you are — shaped by light, space, and feeling.</div>
+      <div className="gen-floating-text">Here you are — shaped by light, space, and feeling.</div>
     </div>
   );
 };
