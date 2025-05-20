@@ -9,16 +9,20 @@
   overflow: hidden;
 }
 
+
 .background-video {
-  position: fixed;
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  /* filter: blur(20px); */ /* Blur removed to keep video sharp */
+  position: absolute;
   top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  left: calc(50% + 10rem);
   transform: translate(-50%, -50%);
-  z-index: -1;
-  /* object-fit: cover; */
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
   pointer-events: none;
+  z-index: -1;
 }
 
 /* SunlitForest.css */
@@ -29,7 +33,7 @@
   height: 100vh;
     width: 100vw;
   margin: 0;
-background: linear-gradient(to bottom, #ffffff 0%, #EBFFB4 60%, #A1D985 100%);
+background: linear-gradient(to bottom, #ffffff 10%, #EBFFB4 60%, #A1D985 100%);
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
   position: fixed;

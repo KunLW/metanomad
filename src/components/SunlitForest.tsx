@@ -26,10 +26,10 @@ const SunlitForest = () => {
   const navigate = useNavigate();
   return (
     <div className="sunlit-container">
-    <video className="background-video" autoPlay loop muted playsInline style={{ width: "auto", height: "100%" }}>
-        <source src="/green_v.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+  <video className="background-video" autoPlay loop muted playsInline>
+    <source src="/green_man.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
       <div className="sunlit-left">
         <p className="gen-subtitle">Time: 25, May, 2025<br />Location: Xiamen, China</p>
         <h1 className="gen-title">Light-Seeker<br />Within the<br />Sunlit Forest</h1>
