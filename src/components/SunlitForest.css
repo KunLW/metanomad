@@ -14,7 +14,6 @@
   width: auto;
   height: 100%;
   object-fit: cover;
-  /* filter: blur(20px); */ /* Blur removed to keep video sharp */
   position: absolute;
   top: 50%;
   left: calc(50% + 10rem);
@@ -24,6 +23,7 @@
   pointer-events: none;
   z-index: -1;
 }
+
 
 /* SunlitForest.css */
 
