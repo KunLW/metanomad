@@ -39,15 +39,16 @@ export const images3: ImageItem[] = [
 
 interface ImageGalleryProps {
   images: ImageItem[];
+  onSelect?: (id: number) => void;  
 }
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onSelect }) => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const handleClick = (id: number) => {
     setSelectedId(id);
-    console.log("Selected image ID:", id);
+    onSelect?.(id);  // 通知父组件
   };
 
   return (

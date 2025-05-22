@@ -9,15 +9,14 @@
   overflow: hidden;
 }
 
-
 .background-video {
   width: auto;
   height: 100%;
-  object-fit: cover;
   position: absolute;
   top: 50%;
-  left: calc(50% + 10rem);
-  transform: translate(-50%, -50%);
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
   -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
   pointer-events: none;

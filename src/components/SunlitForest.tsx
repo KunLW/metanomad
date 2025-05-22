@@ -27,7 +27,7 @@ const SunlitForest = () => {
   return (
     <div className="sunlit-container">
   <video className="background-video" autoPlay loop muted playsInline>
-    <source src="/green_man.mp4" type="video/mp4" />
+    <source src="/green_man_long.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
       <div className="sunlit-left">
