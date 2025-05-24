@@ -3,6 +3,118 @@ import "../components/Generate.css";
 import GeneratePageContent from "../components/GeneratePageContent";
 import { contentMap } from "../config/contentMap"; // Import the content map
 
+
+const iconMap: { [key: string]: number } = {
+
+"mou": 72,
+"hil": 55,
+"pla": 91,
+"des": 46,
+"sea": 66,
+"for": 85,
+
+"sunny": 40,
+"cloudy": 50,
+"rainy": 70,
+"stormy": 30,
+"snowy": 20,
+"windy": 60,
+
+"happy": 77,
+"calm": 58,
+"scared": 34,
+"sad": 45,
+"excited": 66,
+"funny": 86
+};
+
+
+export const pageColorMap: {
+  [key: string]: {
+    titleColor: string;
+    statsColor: string;
+    statsBgColor: string;
+  };
+} = {
+  mou: {
+    titleColor: "#096A25",
+    statsColor: "#C8D167",
+    statsBgColor: "rgba(104, 159, 84, 0.8)",
+  },
+  hil: {
+    titleColor: "#096A65",
+    statsColor: "#88DDCA",
+    statsBgColor: "rgba(70, 120, 145, 0.8)",
+  },
+  pla: {
+    titleColor: "#6A0969",
+    statsColor: "#E89ADC",
+    statsBgColor: "rgba(136, 74, 152, 0.8)",
+  },
+  des: {
+    titleColor: "#6A3B09",
+    statsColor: "#FBCD89",
+    statsBgColor: "rgba(159, 128, 84, 0.8)",
+  },
+  sea: {
+    titleColor: "#09506A",
+    statsColor: "#89CFFB",
+    statsBgColor: "rgba(84, 138, 159, 0.8)",
+  },
+  for: {
+    titleColor: "#6A0909",
+    statsColor: "#F3AAA3",
+    statsBgColor: "rgba(159, 84, 85, 0.8)",
+  },
+};
+
+
+const titleMap: { [key: string]: string } = {
+  
+"mou-happy": "Summit-Joy at the Dawn Peak",
+"mou-calm": "Peak-Tranquil Above the Misty Mountains",
+"mou-scared": "Shadow-Haunter in the Stormy Ridge",
+"mou-sad": "Echo-Lament Across the Silent Crags",
+"mou-excited": "Wonder-Struck on the Thunder Peak",
+"mou-funny": "Rock-Jester Among the Rolling Stones",
+
+"hil-happy": "Light-Dodger on the Sunlit Hill",
+"hil-calm": "Meadow-Whisper Across the Gentle Hill",
+"hil-scared": "Dusk-Fear on the Whispering Knoll",
+"hil-sad": "Mist-Tear Among the Lonely Mounds",
+"hil-excited": "Breeze-Chaser Across the Rolling Knolls",
+"hil-funny": "Puddle-Bouncer on the Playful Hillock",
+
+"pla-happy": "Dawn-Singer Across the Golden Plains",
+"pla-calm": "Wind-Sleeper on the Tranquil Plains",
+"pla-scared": "Heat-Haunter Through the Shimmering Plains",
+"pla-sad": "Dune-Sorrow Along the Endless Plains",
+"pla-excited": "Gale-Rider Across the Vibrant Plains",
+"pla-funny": "Laugh-Roller of the Windy Plains",
+
+"des-happy": "Sun-Smiler on the Golden Dunes",
+"des-calm": "Slow Wanderer Under the Sunlit Desert",
+"des-scared": "Sand-Screamer Amid the Shifting Dunes",
+"des-sad": "Dust-Sigh Across the Abandoned Wastes",
+"des-excited": "Fire-Dasher Through the Scorching Sands",
+"des-funny": "Cactus-Comedian Among the Desert Thorns",
+
+"sea-happy": "Wave-Singer at the Sunlit Shore",
+"sea-calm": "Tide-Dreamer Beneath the Gentle Tide",
+"sea-scared": "Storm-Runner on the Roaring Shore",
+"sea-sad": "Salt-Tear Along the Moonlit Beach",
+"sea-excited": "Surf-Dancer Over the Foamy Crest",
+"sea-funny": "Silent Soul beneath the Sunlit Shore",
+
+"for-happy": "Dawn-Harvester in the Sunlit Forest",
+"for-calm": "Light-Seeker Within the Sunlit Forest",
+"for-scared": "Shadow-Lurker Among the Ancient Oaks",
+"for-sad": "Dew-Mourner Beneath the Lonely Pines",
+"for-excited": "Leaf-Rider on the Glittering Canopy",
+"for-funny": "Acorn-Prankster Amid the Woodland Floor"
+}
+
+
 const GeneratePage: React.FC = () => {
   const [answers, setAnswers] = useState<{ [key: string]: string | null }>({});
   const [pageContent, setPageContent] = useState<{
@@ -10,8 +122,10 @@ const GeneratePage: React.FC = () => {
     subtitle: string;
     videoSrc: string;
     floatingText: string;
-    stats: { icon: string; label: string; value: number; colorClass: string }[];
-    bgColor: string;
+    stats: { icon: string; value: number;}[];
+    statsBgColor?: string;
+    statsColor?: string;
+    titleColor?: string;
   } | null>(null);
   const [bgm, setBgm] = useState<string | null>(null);
 
@@ -23,40 +137,33 @@ const GeneratePage: React.FC = () => {
     setAnswers({ location, weather, emotion });
 
     const key = `${location}-${emotion}`;
-    const selectedContent = contentMap[key];
-    if (selectedContent) {
-      setPageContent(selectedContent); // Set to state
-    }
+    const today = new Date();
+    const dateString = today.toLocaleDateString();
+    
+    const stats = [
+      { icon: location ?? "default", value: iconMap[location as string] || 0 },
+      { icon: weather ?? "default", value: iconMap[weather as string] || 0 },
+      { icon: emotion ?? "default", value: iconMap[emotion as string] || 0 },
+    ];
+
+    setPageContent({
+      title: titleMap[key] || "Default Title",
+      subtitle: `Time: ${dateString} Location: Xiamen, China`,
+      videoSrc: `/videos/${key}.mp4`,
+      floatingText: `Here you are — shaped by light, space, and feeling.`,
+      stats,
+      statsBgColor: pageColorMap[location as string]?.statsBgColor,
+      statsColor: pageColorMap[location as string]?.statsColor,
+      titleColor: pageColorMap[location as string]?.titleColor,
+    });
 
     // Set background music based on weather
-    let musicUrl = null;
-    switch (weather) {
-      case "sunny":
-        musicUrl = "/music/sunny.mp3";
-        break;
-      case "rainy":
-        musicUrl = "/music/rainy.mp3";
-        break;
-      case "cloudy":
-        musicUrl = "/music/cloudy.mp3";
-        break;
-      case "stormy":
-        musicUrl = "/music/stormy.mp3";
-        break;
-      case "snowy":
-        musicUrl = "/music/snowy.mp3";
-        break;
-      case "windy":
-        musicUrl = "/music/windy.mp3";
-        break;
-      default:
-        musicUrl = null;
-    }
-    setBgm(musicUrl);
+
+    setBgm(`/music/${weather}.WAV`);
 
     console.log("Key:", key);
     console.log("Answers:", { location, weather, emotion });
-    console.log("Selected Content:", selectedContent);
+    console.log("Page Content:", pageContent);
   }, []);
 
   return (
@@ -68,7 +175,9 @@ const GeneratePage: React.FC = () => {
           videoSrc={pageContent.videoSrc}
           floatingText={pageContent.floatingText}
           stats={pageContent.stats}
-          bgColor={pageContent.bgColor}
+          statsColor={pageContent.statsColor}
+          statsBgColor={pageContent.statsBgColor}
+          titleColor={pageContent.titleColor}
         />
         {bgm && <audio src={bgm} autoPlay loop />}
       </>
