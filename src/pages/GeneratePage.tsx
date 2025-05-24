@@ -37,9 +37,9 @@ export const pageColorMap: {
   };
 } = {
   mou: {
-    titleColor: "#096A25",
-    statsBgColor: "#C8D167",
-    statsColor: "rgba(104, 159, 84, 0.8)",
+    titleColor: "#6A0909",
+    statsBgColor: "#F3AAA3",
+    statsColor: "rgba(159, 84, 85, 0.8)",
   },
   hil: {
     titleColor: "#096A65",
@@ -62,9 +62,9 @@ export const pageColorMap: {
     statsColor: "rgba(84, 138, 159, 0.8)",
   },
   for: {
-    titleColor: "#6A0909",
-    statsBgColor: "#F3AAA3",
-    statsColor: "rgba(159, 84, 85, 0.8)",
+    titleColor: "#096A25",
+    statsBgColor: "#C8D167",
+    statsColor: "rgba(104, 159, 84, 0.8)",
   },
 };
 
