@@ -38,33 +38,33 @@ export const pageColorMap: {
 } = {
   mou: {
     titleColor: "#096A25",
-    statsColor: "#C8D167",
-    statsBgColor: "rgba(104, 159, 84, 0.8)",
+    statsBgColor: "#C8D167",
+    statsColor: "rgba(104, 159, 84, 0.8)",
   },
   hil: {
     titleColor: "#096A65",
-    statsColor: "#88DDCA",
-    statsBgColor: "rgba(70, 120, 145, 0.8)",
+    statsBgColor: "#88DDCA",
+    statsColor: "rgba(70, 120, 145, 0.8)",
   },
   pla: {
     titleColor: "#6A0969",
-    statsColor: "#E89ADC",
-    statsBgColor: "rgba(136, 74, 152, 0.8)",
+    statsBgColor: "#E89ADC",
+    statsColor: "rgba(136, 74, 152, 0.8)",
   },
   des: {
     titleColor: "#6A3B09",
-    statsColor: "#FBCD89",
-    statsBgColor: "rgba(159, 128, 84, 0.8)",
+    statsBgColor: "#FBCD89",
+    statsColor: "rgba(159, 128, 84, 0.8)",
   },
   sea: {
     titleColor: "#09506A",
-    statsColor: "#89CFFB",
-    statsBgColor: "rgba(84, 138, 159, 0.8)",
+    statsBgColor: "#89CFFB",
+    statsColor: "rgba(84, 138, 159, 0.8)",
   },
   for: {
     titleColor: "#6A0909",
-    statsColor: "#F3AAA3",
-    statsBgColor: "rgba(159, 84, 85, 0.8)",
+    statsBgColor: "#F3AAA3",
+    statsColor: "rgba(159, 84, 85, 0.8)",
   },
 };
 
