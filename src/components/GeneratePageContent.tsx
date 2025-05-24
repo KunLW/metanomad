@@ -9,13 +9,13 @@ type Stat = {
 
 type GeneratePageProps = {
   title: string;
-  titleColor?: string;
+  titleColor: string;
   subtitle: string;
   videoSrc: string;
   floatingText: string;
   stats: Stat[];
-  statsColor?: string;
-  statsBgColor?: string;
+  statsColor: string;
+  statsBgColor: string;
 };
 
 const StatsBar: React.FC<{ stats: Stat[]; statsColor?: string; statsBgColor?: string }> = ({ stats, statsColor, statsBgColor }) => (
@@ -23,9 +23,9 @@ const StatsBar: React.FC<{ stats: Stat[]; statsColor?: string; statsBgColor?: st
     {stats.map((stat, index) => (
       <div className="stat" key={index}>
         <img src={`/icon/${stat.icon}.png`} alt={stat.icon} style={{ width: 24, height: 24 }} />
-        <div className="bar">
-          <div className={`fill ${statsColor}`} style={{ width: `${stat.value}%`, backgroundColor: statsBgColor }}></div>
-        </div>
+        <div className="bar" style={{ backgroundColor: statsBgColor }}>
+  <div className="fill" style={{ width: `${stat.value}%`, backgroundColor: statsColor }}></div>
+</div>
       </div>
     ))}
   </div>
