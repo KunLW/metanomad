@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../components/Generate.css";
 import GeneratePageContent from "../components/GeneratePageContent";
-import { contentMap } from "../config/contentMap"; // Import the content map
+
 
 
 const iconMap: { [key: string]: number } = {
@@ -29,12 +29,12 @@ const iconMap: { [key: string]: number } = {
 };
 
 const pageColorMap: { [key: string]: { titleColor: string; statsColor: string; statsBgColor: string } } = {
-  mou: { titleColor: "#096A25", statsColor: "#C8D167", statsBgColor: "#689F54" },
+  mou: { titleColor: "#6A0909", statsColor: "#F3AAA3", statsBgColor: "#9F5455" },
   hil: { titleColor: "#096A65", statsColor: "#88DDCA", statsBgColor: "#467891" },
   pla: { titleColor: "#6A0969", statsColor: "#E89ADC", statsBgColor: "#884A98" },
   des: { titleColor: "#6A3B09", statsColor: "#FBCD89", statsBgColor: "#9F8054" },
   sea: { titleColor: "#09506A", statsColor: "#89CFFB", statsBgColor: "#548A9F" },
-  for: { titleColor: "#6A0909", statsColor: "#F3AAA3", statsBgColor: "#9F5455" },
+  for: { titleColor: "#096A25", statsColor: "#C8D167", statsBgColor: "#689F54" },
 };
 
 
