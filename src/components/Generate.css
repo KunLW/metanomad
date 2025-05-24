@@ -83,7 +83,6 @@
 .bar {
   height: 6px;
   width: 150px;
-  background-color: #d3e9c9;
   border-radius: 5px;
   margin-left: 0.5rem;
   overflow: hidden;
@@ -91,22 +90,8 @@
 
 .fill {
   height: 100%;
-  background-color: #6f9f3e;
+  
 }
-
-.fill-1 {
-  width: 80%;
-}
-
-.fill-2 {
-  width: 90%;
-}
-
-.fill-3 {
-  width: 70%;
-}
-
-
 
 .gen-right {
   flex-grow: 1;
