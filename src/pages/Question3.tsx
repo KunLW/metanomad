@@ -25,6 +25,7 @@ to shape your digital avatar.</p>
             <FancyButton text="Next" onClick={() => {
               if (selectedId !== null) {
                 localStorage.setItem("question3_selectedId", selectedId.toString());
+                console.log("Selected ID:", selectedId);
               }
               navigate("/generate");
             }} />

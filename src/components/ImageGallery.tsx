@@ -3,36 +3,36 @@ import "./ImageGallery.css";
 
 // Define the type of each image object
 interface ImageItem {
-  id: number;
+  id: string;
   src: string;
 }
 
 // Define the list of images
 export const images1: ImageItem[] = [
-  { id: 1, src: "/Desert.png" },
-  { id: 2, src: "/Hill.png" },
-  { id: 3, src: "/Mountain.png" },
-  { id: 4, src: "/Forest.png" },
-  { id: 5, src: "/Plain.png" },
-  { id: 6, src: "/Seashore.png" },
+  { id: "des", src: "/Desert.png" },
+  { id: "hil", src: "/Hill.png" },
+  { id: "mou", src: "/Mountain.png" },
+  { id: "for", src: "/Forest.png" },
+  { id: "pla", src: "/Plain.png" },
+  { id: "sea", src: "/Seashore.png" },
 ];
 
 export const images2: ImageItem[] = [
-  { id: 1, src: "/Sunny.png" },
-  { id: 2, src: "/Cloudy.png" },
-  { id: 3, src: "/Rainy.png" },
-  { id: 4, src: "/Stormy.png" },
-  { id: 5, src: "/Snowy.png" },
-  { id: 6, src: "/Windy.png" },
+  { id: "sunny", src: "/Sunny.png" },
+  { id: "cloudy", src: "/Cloudy.png" },
+  { id: "rainy", src: "/Rainy.png" },
+  { id: "stormy", src: "/Stormy.png" },
+  { id: "snowy", src: "/Snowy.png" },
+  { id: "windy", src: "/Windy.png" },
 ];
 
 export const images3: ImageItem[] = [
-  { id: 1, src: "/Happy.png" },
-  { id: 2, src: "/Calm.png" },
-  { id: 3, src: "/Scared.png" },
-  { id: 4, src: "/Sad.png" },
-  { id: 5, src: "/Excited.png" },
-  { id: 6, src: "/Funny.png" },
+  { id: "happy", src: "/Happy.png" },
+  { id: "calm", src: "/Calm.png" },
+  { id: "scared", src: "/Scared.png" },
+  { id: "sad", src: "/Sad.png" },
+  { id: "excited", src: "/Excited.png" },
+  { id: "funny", src: "/Funny.png" },
 ];
 
 
@@ -43,12 +43,12 @@ interface ImageGalleryProps {
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onSelect }) => {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const handleClick = (id: number) => {
+  const handleClick = (id: string) => {
     setSelectedId(id);
-    onSelect?.(id);  // 通知父组件
+    onSelect?.(id as unknown as number);  // 通知父组件
   };
 
   return (
