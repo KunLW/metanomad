@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../components/Generate.css";
 import GeneratePageContent from "../components/GeneratePageContent";
-import { contentMap } from "../config/contentMap"; // Import the content map
 
 
 const iconMap: { [key: string]: number } = {
@@ -85,7 +84,7 @@ const titleMap: { [key: string]: string } = {
 
 
 const GeneratePage: React.FC = () => {
-  const [answers, setAnswers] = useState<{ [key: string]: string | null }>({});
+//   const [answers, setAnswers] = useState<{ [key: string]: string | null }>({});
   const [pageContent, setPageContent] = useState<{
     title: string;
     subtitle: string;
@@ -103,7 +102,7 @@ const GeneratePage: React.FC = () => {
     const weather = localStorage.getItem("question2_selectedId");
     const emotion = localStorage.getItem("question3_selectedId");
 
-    setAnswers({ location, weather, emotion });
+    // setAnswers({ location, weather, emotion });
 
     const key = `${location}-${emotion}`;
     const today = new Date();
