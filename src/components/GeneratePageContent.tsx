@@ -1,6 +1,7 @@
 import "./Generate.css";
 import { FancyButton } from "./FancyButton";
 import { useNavigate } from "react-router-dom";
+import React, { useRef } from "react";
 
 type Stat = {
   icon: string;
@@ -42,8 +43,21 @@ const GeneratePageContent: React.FC<GeneratePageProps> = ({
   statsBgColor,
 }) => {
   const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+
+  // 复制网页链接到剪切板并提示
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert("copy to the clipboard");
+    } catch (e) {
+      alert("Failed to copy link");
+    }
+  };
+
   return (
-    <div className="gen-container">
+    <div className="gen-container" ref={containerRef}>
       <video className="background-video" autoPlay loop muted playsInline>
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
@@ -55,10 +69,10 @@ const GeneratePageContent: React.FC<GeneratePageProps> = ({
 
         <StatsBar stats={stats} statsColor={statsColor} statsBgColor={statsBgColor} />
 
-        <div className="card" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div className="card" style={{ display: "flex", justifyContent: "center", alignItems: "center" }} ref={buttonsRef}>
           <FancyButton text="Home" onClick={() => navigate("/")} />
           <div style={{ width: "30px" }}></div>
-          <FancyButton text="Share" onClick={() => navigate("/")} />
+          <FancyButton text="Share" onClick={handleShare} />
         </div>
       </div>
 
