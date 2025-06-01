@@ -88,7 +88,8 @@ const GeneratePage: React.FC = () => {
 //   const [answers, setAnswers] = useState<{ [key: string]: string | null }>({});
   const [pageContent, setPageContent] = useState<{
     title: string;
-    subtitle: string;
+    time: string;
+    location: string;
     videoSrc: string;
     floatingText: string;
     stats: { icon: string; value: number;}[];
@@ -103,36 +104,51 @@ const GeneratePage: React.FC = () => {
     const weather = localStorage.getItem("question2_selectedId");
     const emotion = localStorage.getItem("question3_selectedId");
 
-    // setAnswers({ location, weather, emotion });
-
     const key = `${location}-${emotion}`;
     const today = new Date();
-    const dateString = today.toLocaleDateString();
-    
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = today.toLocaleString('en-US', { month: 'short' });
+    const year = today.getFullYear();
+    const dateString = `${day} ${month}, ${year}`;
     const stats = [
       { icon: location ?? "default", value: iconMap[location as string] || 0 },
       { icon: weather ?? "default", value: iconMap[weather as string] || 0 },
       { icon: emotion ?? "default", value: iconMap[emotion as string] || 0 },
     ];
 
-    setPageContent({
-      title: titleMap[key] || "Default Title",
-      subtitle: `Time: ${dateString} Location: Xiamen, China`,
-      videoSrc: `/videos/${key}.mp4`,
-      floatingText: `Here you are — shaped by light, space, and feeling.`,
-      stats,
-      statsBgColor: pageColorMap[location as string]?.statsBgColor || "#000",
-      statsColor: pageColorMap[location as string]?.statsColor || "#000",
-      titleColor: pageColorMap[location as string]?.titleColor || "#000",
-    });
-
-    // Set background music based on weather
+    fetch("https://ipapi.co/json/")
+      .then(res => res.json())
+      .then(data => {
+        const city = data.city || "Somewhere";
+        const country = data.country_name || "";
+        const fullLocation = `${city}${country ? ", " + country : ""}`;
+        setPageContent({
+          title: titleMap[key] || "Default Title",
+          time: `Time: ${dateString}`,
+          location: `Location: ${fullLocation}`,
+          videoSrc: `/videos/${key}.mp4`,
+          floatingText: `Here you are — shaped by light, space, and feeling.`,
+          stats,
+          statsBgColor: pageColorMap[location as string]?.statsBgColor || "#000",
+          statsColor: pageColorMap[location as string]?.statsColor || "#000",
+          titleColor: pageColorMap[location as string]?.titleColor || "#000",
+        });
+      })
+      .catch(() => {
+        setPageContent({
+          title: titleMap[key] || "Default Title",
+          time: `Time: default time`,
+          location: `Location: default location`,
+          videoSrc: `/videos/${key}.mp4`,
+          floatingText: `Here you are — shaped by light, space, and feeling.`,
+          stats,
+          statsBgColor: pageColorMap[location as string]?.statsBgColor || "#000",
+          statsColor: pageColorMap[location as string]?.statsColor || "#000",
+          titleColor: pageColorMap[location as string]?.titleColor || "#000",
+        });
+      });
 
     setBgm(`/music/${weather}.WAV`);
-
-    console.log("Key:", key);
-    console.log("Answers:", { location, weather, emotion });
-    console.log("Page Content:", pageContent);
   }, []);
 
   return (
@@ -140,7 +156,8 @@ const GeneratePage: React.FC = () => {
       <>
         <GeneratePageContent
           title={pageContent.title}
-          subtitle={pageContent.subtitle}
+          time={pageContent.time}
+          location={pageContent.location}
           videoSrc={pageContent.videoSrc}
           floatingText={pageContent.floatingText}
           stats={pageContent.stats}

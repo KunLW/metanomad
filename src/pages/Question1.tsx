@@ -12,8 +12,8 @@ function Questions() {
   return (
     <div className="screen green-screen">
       <div style={{ position: "relative", zIndex: 1 }}>
-        <p className="question-paragraph">Answer a few simple questions
-to shape your digital avatar.</p>
+        <p className="question-paragraph">Geographical Location: Establish a direct connection between your digital avatar and your current environment.
+</p>
         <h1 className="question-title">Where are you now？</h1>
         <div style={{ padding: "30px" }}>
           <ImageGallery images={images1} onSelect={setSelectedId} />

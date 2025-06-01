@@ -13,8 +13,7 @@ function Questions() {
   return (
     <div className="screen red-screen">
       <div style={{ position: "relative", zIndex: 1 }}>
-        <p className="question-paragraph">Answer a few simple questions
-to shape your digital avatar.</p>
+        <p className="question-paragraph">Emotional State: Accurately reflect your inner feelings in the avatar’s movements and poses.</p>
         <h1 className="question-title">How do you feel?</h1>
         <div style={{ padding: "30px" }}>
           <ImageGallery images={images3} onSelect={setSelectedId} />

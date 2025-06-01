@@ -11,7 +11,8 @@ type Stat = {
 type GeneratePageProps = {
   title: string;
   titleColor: string;
-  subtitle: string;
+  time: string;
+  location: string;
   videoSrc: string;
   floatingText: string;
   stats: Stat[];
@@ -35,7 +36,8 @@ const StatsBar: React.FC<{ stats: Stat[]; statsColor?: string; statsBgColor?: st
 const GeneratePageContent: React.FC<GeneratePageProps> = ({
   title,
   titleColor,
-  subtitle,
+  time,
+  location,
   videoSrc,
   floatingText,
   stats,
@@ -47,11 +49,18 @@ const GeneratePageContent: React.FC<GeneratePageProps> = ({
   const buttonsRef = useRef<HTMLDivElement>(null);
 
   // 复制网页链接到剪切板并提示
-  const handleShare = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
+  
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: "Moodscape Creation",
+        text: "Here's what I generated. Pretty surreal, right?",
+        url: window.location.href,
+      }).catch(err => console.error("Share failed:", err));
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
       alert("copy to the clipboard");
-    } catch (e) {
+    } else {
       alert("Failed to copy link");
     }
   };
@@ -64,7 +73,7 @@ const GeneratePageContent: React.FC<GeneratePageProps> = ({
       </video>
 
       <div className="gen-left">
-        <p className="gen-subtitle" style={{ color: titleColor }}>{subtitle}</p>
+        <p className="gen-subtitle" style={{ color: titleColor }}>{time}<br /> {location}</p>
         <h1 className="gen-title" dangerouslySetInnerHTML={{ __html: title }} style={{ color: titleColor }}></h1>
 
         <StatsBar stats={stats} statsColor={statsColor} statsBgColor={statsBgColor} />

@@ -23,7 +23,7 @@ function Home() {
         <h1>Welcome, traveler</h1>
         <h2>Here, create your own digital avatar.</h2>
         <div className="card" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-            <FancyButton text="开始" onClick={() => navigate("/start")} />
+            <FancyButton text="Start" onClick={() => navigate("/start")} />
         </div>
       </div>
     </>
