@@ -1,7 +1,8 @@
 import "./Generate.css";
 import { FancyButton } from "./FancyButton";
 import { useNavigate } from "react-router-dom";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import { SvgBackground } from "../SvgBackground";
 
 type Stat = {
   icon: string;
@@ -47,6 +48,11 @@ const GeneratePageContent: React.FC<GeneratePageProps> = ({
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const [showOverlay, setShowOverlay] = useState(true);
+
+  React.useEffect(() => {
+    setShowOverlay(true); // 组件每次被调用时立即显示 loading
+  }, [videoSrc]);
 
   // 复制网页链接到剪切板并提示
   
@@ -67,7 +73,26 @@ const GeneratePageContent: React.FC<GeneratePageProps> = ({
 
   return (
     <div className="gen-container" ref={containerRef}>
-      <video className="background-video" autoPlay loop muted playsInline>
+      {showOverlay && (
+        <div className="start-page">
+  <div className="white-bg" style={{zIndex: 3}}/>
+  <SvgBackground orbitA={150} orbitB={40} scale={1} zIndex={4}/>
+  <div className="content" style={{ position: "relative", zIndex: 20 }}>
+    <h1 className="title">The soul is being connected...</h1>
+    <p className="title multiline">
+      Your digital avatar is about to awaken.
+    </p>
+  </div>
+</div>
+      )}
+      <video
+        className="background-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+        onCanPlayThrough={() => setShowOverlay(false)}
+      >
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

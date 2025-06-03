@@ -6,7 +6,8 @@ export type BackgroundProps = {
   position?: string;          // 背景图位置 (CSS background-position)
   scale?: number;            // 背景图缩放比例
   orbitA?: number;         // 长轴半径
-orbitB?: number;         // 短轴半径
+  orbitB?: number;         // 短轴半径
+  zIndex?: number;          // 背景 z-index
 };
 
 export const SvgBackground: React.FC<BackgroundProps> = ({
@@ -16,13 +17,14 @@ export const SvgBackground: React.FC<BackgroundProps> = ({
   scale = 0.5, // 默认缩放比例
   orbitA = 0, // 默认长轴半径
   orbitB = 0, // 默认短轴半径
+  zIndex = -2, // 默认 z-index
 }) => {
   const ellipticalOrbitStyle: React.CSSProperties = {
     position: "fixed",
     top: "50%",
     left: "50%",
     animation: `elliptical-orbit-${orbitA}-${orbitB} ${rotationSpeed * 2}s linear infinite`,
-    zIndex: -2,
+    zIndex: zIndex,
   };
 
   const selfSpinStyle: React.CSSProperties = {

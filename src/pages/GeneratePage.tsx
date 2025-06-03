@@ -126,7 +126,7 @@ const GeneratePage: React.FC = () => {
           title: titleMap[key] || "Default Title",
           time: `Time: ${dateString}`,
           location: `Location: ${fullLocation}`,
-          videoSrc: `/videos/${key}.mp4`,
+          videoSrc: key ? `https://gpncywgkmnzqcolrgvng.supabase.co/storage/v1/object/public/video/${key}.mp4` : "",
           floatingText: `Here you are — shaped by light, space, and feeling.`,
           stats,
           statsBgColor: pageColorMap[location as string]?.statsBgColor || "#000",
@@ -139,7 +139,7 @@ const GeneratePage: React.FC = () => {
           title: titleMap[key] || "Default Title",
           time: `Time: default time`,
           location: `Location: default location`,
-          videoSrc: `/videos/${key}.mp4`,
+          videoSrc: key ? `https://gpncywgkmnzqcolrgvng.supabase.co/storage/v1/object/public/video/${key}.mp4` : "",
           floatingText: `Here you are — shaped by light, space, and feeling.`,
           stats,
           statsBgColor: pageColorMap[location as string]?.statsBgColor || "#000",
@@ -148,7 +148,7 @@ const GeneratePage: React.FC = () => {
         });
       });
 
-    setBgm(`/music/${weather}.WAV`);
+    setBgm(weather ? `https://gpncywgkmnzqcolrgvng.supabase.co/storage/v1/object/public/music/${weather}.WAV` : "");
   }, []);
 
   return (
